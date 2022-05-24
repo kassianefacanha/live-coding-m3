@@ -1,0 +1,106 @@
+# REVISÃO GERAL
+
+# Criação/Deleção Database
+CREATE DATABASE TESTES;
+DROP DATABASE TESTES;
+# Criação/Deleção Table
+CREATE TABLE TABLETESTE(
+ID INT,
+NOME TEXT
+);
+DROP TABLE TABLETESTE;
+# CRUD
+#	Inserção de registros - CREATE -> INSERT
+INSERT INTO TABLETESTE (ID, NOME)
+VALUES
+(1,'KASSIANE'),
+(2,'KARINE'),
+(3,'KAUANE'),
+(4,'KAKA');
+#	Mostrar registros - READ -> SELECT
+SELECT * FROM TABLETESTE;
+#	Atualizar registros - UPDATE - > UPDATE
+UPDATE TABLETESTE 
+SET NOME = "KARINE QUÉZIA" 
+WHERE ID = 2;
+#	Deletar Registros - Delete -> Delete
+DELETE FROM TABLETESTE WHERE ID = 4;
+# Filtragens
+#	AND, OR , NOT, <>
+SELECT FIRST_NAME 
+FROM ACTOR
+WHERE NOT FIRST_NAME = 'PENELOPE' 
+AND NOT FIRST_NAME = 'NICK';
+#	IN
+SELECT FIRST_NAME 
+FROM ACTOR
+WHERE NOT FIRST_NAME IN ('PENELOPE','NICK');
+#	LIKE
+SELECT FIRST_NAME 
+FROM ACTOR
+WHERE FIRST_NAME LIKE '_ENELOPE' 
+OR FIRST_NAME LIKE 'N%';
+#	BETWEEN
+SELECT ACTOR_ID, FIRST_NAME 
+FROM ACTOR
+WHERE ACTOR_ID BETWEEN 20 AND 50;
+#	LIMIT
+SELECT ACTOR_ID, FIRST_NAME 
+FROM ACTOR
+WHERE ACTOR_ID BETWEEN 20 AND 50 LIMIT 3;
+#	ORDER BY
+SELECT ACTOR_ID, FIRST_NAME 
+FROM ACTOR
+WHERE ACTOR_ID BETWEEN 20 AND 50 
+ORDER BY ACTOR_ID DESC
+LIMIT 3;
+#	MAX(), MIM()
+SELECT MAX(amount), MIN(amount) 
+FROM payment;
+#	COUNT(), SUM(), GROUP BY 
+SELECT customer_id, SUM(amount), COUNT(customer_id) 
+FROM payment
+GROUP BY customer_id;
+#   HAVING
+SELECT customer_id, SUM(amount), COUNT(customer_id) 
+FROM payment
+GROUP BY customer_id
+HAVING SUM(AMOUNT) > 100;
+#	CASE, WHEN, THEN, ELSE, END
+SELECT customer_id, SUM(amount), COUNT(customer_id),
+CASE
+	WHEN SUM(AMOUNT) >= 200 THEN  'CLIENTE BRABO'
+    WHEN SUM(AMOUNT) >= 150 THEN  'CLIENTE TOP'
+	WHEN SUM(AMOUNT) >= 120 THEN  'CLIENTE REGULAR'
+    ELSE 'SÓ CLIENTE'
+END AS SITUACAO 
+FROM payment
+GROUP BY customer_id
+HAVING SUM(AMOUNT) > 100;
+
+# INNER JOIN 
+SELECT a.Nome, b.Nome
+FROM TabelaA as A
+INNER JOIN TabelaB as B 
+	on a.Nome = b.Nome;
+    
+# LEFT JOIN 
+SELECT a.Nome, b.Nome
+FROM TabelaA as A
+LEFT JOIN TabelaB as B
+                on a.Nome = b.Nome;
+# RIGHT JOIN 
+SELECT a.Nome, b.Nome
+FROM TabelaA as A
+RIGHT JOIN TabelaB as B
+  on a.Nome = b.Nome;
+  
+# SUBQUERYS
+SELECT customer_id, max(soma) 
+FROM(SELECT customer_id, sum(amount) as soma
+from payment
+group by customer_id) as subquery;
+  
+
+
+
