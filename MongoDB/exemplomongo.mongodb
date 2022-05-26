@@ -1,0 +1,71 @@
+
+// estrutura
+// db.nomecollecao.comando()
+// comandos
+// insert
+// find
+// update
+// delele
+
+// ONE = 1 resgistry
+// Many = muitos registros
+
+// criação de coleção
+db.createCollection('alunos2') 
+db.alunos.drop();
+
+// CRUD
+
+// inserção de registros
+db.alunos2.insertMany([
+  { 
+      '_id': 1, 
+      'modelo': 'fusca' , 
+      'ano': 2009, 
+      'cor': 'azul',
+      'dono': 'kassiane', 
+      'dono': 'kassiasdas', 
+      'dono': 'kassiasdaane', 
+      'dono': 'kassisdaane', 
+      'dono': 'kassisdaane', 
+      'dono': 'kassisdaane', 
+      'notas': 10
+},
+  { '_id': 2, 'memoria': 200 , 'tamanho': 9, 'processador': 'intel',  },
+  { '_id': 3, 'nome': 'GUSTAVO', 'notas': 10, 'HB': 'PT' },
+  { '_id': 4, 'nome': 'KARINE', 'notas': 10, 'HB': 'GE' },
+]);
+
+db.alunos2.insertOne( {'nome': 'KARINE', 'notas': 10, 'HB': 'GE' })
+
+// busca e retorna todos os dados contidos na tabela alunos.
+db.alunos2.find() 
+
+// atualiza apenas um 
+db.alunos2.updateOne({'_id' : 4},
+   {
+     $set: {'HB': 'MT' }
+   }
+)
+// atualiza muitos
+db.alunos2.updateMany({'HB': 'MT' },
+   {
+     $set: {'nome': 'KASSIANE' }
+   }
+)
+
+// comando para excluir um aluno que tenha esta id
+db.alunos2.deleteOne({'_id' : 4}) 
+db.alunos2.deleteMany({}) 
+
+//  busca todos os dados que contenha os nome 'jose' (é o SELECT)
+db.alunos2.find({ nome: 'JOSE' })
+
+db.alunos2.find({ notas: {$gt: 4}})
+
+// — ordena os alunos por nome em ordem crescente. Para fazer a ordem decrescente, é so trocar por -1
+db.alunos2.find().sort({'nome' : 1}) 
+
+// — exibe apenas os três primeiros resultados da lista, por causa do método limit()
+db.alunos2.find().sort({'nome' : 1}).limit(3) 
+

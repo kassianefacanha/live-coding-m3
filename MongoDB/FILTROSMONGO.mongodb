@@ -1,0 +1,25 @@
+
+// Filtros
+
+
+
+db.alunos2.find();
+// AND
+db.alunos2.find({nome: "GUSTAVO", notas:1});
+
+// OR
+db.alunos2.find({ $or: [ { nome: "GUSTAVO" }, { cor: "azul" } ] });
+
+//IN
+db.alunos2.find({nome: {$in: ["GUSTAVO", "KARINE"]}});
+
+// $lt: MENOR QUE
+// $gt: MAIOR QUE
+// $gte: MAIOR OU IGUAL
+// $lte: MENOR OU IGUAL
+// $ne: NÃO É IGUAL
+db.alunos2.find({notas: {$lt: 10}});
+db.alunos2.find({notas: {$gt: 1}});
+
+// LIKE
+db.alunos2.find({nome: {$regex: /^G/}});
