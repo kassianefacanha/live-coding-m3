@@ -1,6 +1,10 @@
 FROM mysql:5.7
 
-ENV MYSQL_ROOT_PASSWORD=12345
+ENV MYSQL_USER=resilia-dev
+
+ENV MYSQL_PASSWORD=resilia-dev-pwd
+
+ENV MYSQL_DATABASE=banco_resilia
 
 VOLUME [ "/volume" ]
 
