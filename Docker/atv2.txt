@@ -1,0 +1,7 @@
+- ps: listar os containers. Nota: falar da flag -a para listar
+os que não estão rodando no momento
+- start: iniciar um container já existente, “dá o play”
+- stop: pausa um container. Ele pode ser iniciado
+novamente com o start, “dá pause”
+- rm: remove um container. Para remover um container em uso, é
+necessário usar a flag -f

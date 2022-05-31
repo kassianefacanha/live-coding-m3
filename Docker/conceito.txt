@@ -1,0 +1,6 @@
+- FROM: declara a imagem base
+- ENV: declara uma variável de ambiente e seu valor
+- VOLUME: declara os volumes que devem ser mapeados
+- EXPOSE: expõe uma porta
+- Nota: o bind de volume e porta deve ser declarado
+ainda no comando de criação do container
