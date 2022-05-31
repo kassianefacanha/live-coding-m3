@@ -1,0 +1,7 @@
+docker run -it busybox
+
+- whoami: retorna o nome do usuário;
+- pwd: retorna o nome do diretório atual
+- mkdir: cria um diretório
+- ls: lista os arquivos dentro de um diretório
+- cd: navega para um diretório
